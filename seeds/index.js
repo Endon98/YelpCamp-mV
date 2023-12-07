@@ -24,7 +24,7 @@ db.once("open", ()=>{
 });
 
 
-const sample = (array) => array[Math.floor(Math.random() * 1000) * array.length];
+const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () =>{
     await Campground.deleteMany({});
@@ -45,5 +45,6 @@ const seedDB = async () =>{
 
 seedDB().then(()=>{
     mongoose.connection.close();
+    console.log("Database closed!")
 });
 

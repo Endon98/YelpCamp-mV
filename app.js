@@ -30,13 +30,12 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
 
 app.get('/', (req, res) => {
-    res.render('views/home')
+    res.render('home')
 })
 
 app.get('/campground', async (req, res) => {
-    const camp = new Campground({title: 'My Backyard', description: 'Cheap Camping'})
-    await camp.save();
-    res.send(camp);
+    const Campgrounds = await Campground.find({});
+    res.render('campgrounds/index', {Campgrounds});
 })
 
 app.listen(3000, () =>{
